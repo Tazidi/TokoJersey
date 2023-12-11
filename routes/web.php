@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Livewire\Home;
+use App\Livewire\AdminDashboard;
 
 
 /*
@@ -25,7 +26,8 @@ Auth::routes();
 // Route::get('/', function () {
 //     return view('livewire.home');
 // });
-
-
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin', AdminDashboard::class)->name('admin.dashboard');
+});
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', Home::class)->name('home');
