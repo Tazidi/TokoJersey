@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Livewire\Home;
 use App\Livewire\AdminDashboard;
-
+use App\Livewire\ProductDetail;
+use App\Livewire\ProductIndex;
+use App\Livewire\ProductLiga;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +33,6 @@ Route::middleware(['auth', 'admin'])->group(function () {
 });
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', Home::class)->name('home');
+Route::get('/products',ProductIndex::class)->name('products');
+Route::get('/products/liga/{ligaId}', ProductLiga::class)->name('product.liga');
+Route::get('/products/{id}',ProductDetail::class)->name('products-detail');
